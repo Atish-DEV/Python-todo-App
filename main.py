@@ -5,16 +5,31 @@ todo_list=[]
 while True:
     user_action=input(MENU).lower()
     if user_action=="add" or user_action=='1':
-        new_todo=input("Enter a new todo Item :")
-        todo_list.append(new_todo)
-        print("New todo item has been added")
-
-
+        new_todo=input("Enter a new todo Item :")+'\n'
+        todo_list_2=[]
+        try:
+            with open("todoList.txt",'r') as file:
+                content=list(file.readlines())
+                todo_list_2=content
+            todo_list_2.append(new_todo)
+            with open("todoList.txt",'w') as file:
+                file.writelines(todo_list_2)
+        except Exception as err:
+            #if File does not exist,create a new file
+            with open("todoList.txt",'w') as file:
+                file.write(new_todo)
+        finally:
+            print("New todo item has been added")
     elif user_action=="show" or user_action=='2':
-        for index,item in enumerate(todo_list):
-            print(f"{index+1}-{item}")
-
-
+        todo_list_2 = []
+        try:
+            with open("todoList.txt", 'r') as file:
+                content = list(file.readlines())
+                todo_list_2=content
+            for index, item in enumerate(todo_list_2):
+                    print(f"{index + 1}-{item[:-1]}")
+        except Exception as err:
+            print('No Task has been added')
     elif user_action=="edit" or user_action=='3':
         try:
             todo_index=int(input("Enter the index no of the todo Item:"))
