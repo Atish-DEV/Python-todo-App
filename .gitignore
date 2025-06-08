@@ -1,0 +1,24 @@
+# Ignore virtual environment
+.venv/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore test, coverage, and logs
+*.log
+.coverage
+.cache
+*.cover
+*.py,cover
+.hypothesis/
+
+# VS Code files (optional if you use VS Code)
+.vscode/
+
+# macOS files (optional)
+.DS_Store
+
+# Jupyter Notebook checkpoints (optional)
+.ipynb_checkpoints/
